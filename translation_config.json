@@ -1,0 +1,12 @@
+{
+  "whisper_model_size": "tiny",
+  "chunk_duration": 3.0,
+  "sample_rate": 16000,
+  "device_name": "CABLE Output",
+  "subtitle_file": "subtitle.txt",
+  "enable_translation": true,
+  "enable_subtitles": true,
+  "subtitle_duration": 3.0,
+  "min_confidence": 0.5,
+  "language": "en"
+}
