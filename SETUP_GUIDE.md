@@ -1,13 +1,13 @@
 # Real-time Audio Translation Setup Guide
 
-This guide will help you set up a real-time English to Farsi translation system that works with VB-Cable and OBS Studio.
+This guide will help you set up a real-time English translation system that works with VB-Cable and OBS Studio.
 
 ## 🎯 Overview
 
 The system consists of:
 1. **Real-time audio capture** from VB-Cable
 2. **Speech recognition** using Whisper
-3. **Translation** using Helsinki-NLP model
+3. **Translation** using Google Translate
 4. **Subtitle display** in OBS Studio
 
 ## 📋 Prerequisites
@@ -121,7 +121,7 @@ If the script doesn't work, you can set up manually:
 
 1. **Create Text Source:**
    - Add → Text (GDI+)
-   - Name it "Farsi_Subtitles"
+   - Name it "Translated_Subtitles"
    - Set font size to 48
    - Enable outline for better visibility
 
@@ -192,8 +192,8 @@ If the script doesn't work, you can set up manually:
 ## 📁 File Structure
 
 ```
-farsi-translator/
-├── farsi_translator.py      # Main translator
+translator/
+├── translator.py            # Main translator
 ├── subtitle_stream.py        # Real-time audio processing
 ├── obs_integration.py       # OBS Studio script
 ├── web_interface.py         # Web control interface
@@ -219,7 +219,7 @@ farsi-translator/
 ### Conference Calls
 1. Set VB-Cable as microphone in your meeting app
 2. Start the translator
-3. Speak in English, see Farsi subtitles
+3. Speak in English, see translated subtitles
 
 ## 🔄 Advanced Features
 
@@ -235,15 +235,15 @@ Edit `translation_config.json`:
   "enable_subtitles": true,
   "subtitle_duration": 3.0,
   "min_confidence": 0.5,
-  "language": "en"
+  "language": "en",
+  "target_language": "fa"
 }
 ```
 
 ### Multiple Language Support
-The system can be extended to support other languages by:
-1. Changing the Helsinki-NLP model
-2. Modifying the language parameter in Whisper
-3. Updating the translation pipeline
+The system can translate into any language. Edit the `target_language` value in
+`translation_config.json` to change the output language. You may also need to
+adjust the Whisper `language` parameter if your audio is not in English.
 
 ### Web Control Interface
 Access the web interface at `http://localhost:7861` to:
@@ -264,7 +264,7 @@ If you encounter issues:
 You'll know it's working when:
 - ✅ Audio is being captured (no "Device not found" errors)
 - ✅ Speech is being recognized (text appears in console)
-- ✅ Translations are generated (Farsi text appears)
+- ✅ Translations are generated (translated text appears)
 - ✅ Subtitles appear in OBS Studio
 - ✅ File `subtitle.txt` is being updated
 

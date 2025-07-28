@@ -19,14 +19,14 @@ try:
                     if json_content != last_json_content and json_content:
                         try:
                             data = json.loads(json_content)
-                            farsi_text = data.get('text', '')
+                            translated_text = data.get('text', '')
                             english_text = data.get('english', '')
                             
-                            if farsi_text:
+                            if translated_text:
                                 print("🎯 NEW TRANSLATION:")
                                 if english_text:
                                     print(f"   🇺🇸 English:  {english_text}")
-                                print(f"   🇮🇷 Farsi:    {farsi_text}")
+                                print(f"   🌐 Translation: {translated_text}")
                                 print("-" * 50)
                                 
                         except json.JSONDecodeError:

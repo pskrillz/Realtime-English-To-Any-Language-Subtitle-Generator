@@ -11,14 +11,14 @@ from subtitle_stream import RealtimeAudioTranslator
 def main():
     print("🎤 Real-time Audio Translator")
     print("=" * 50)
-    print("English to Farsi Translation System")
+    print("English Translation System")
     print("=" * 50)
     
     print("\n📋 Instructions:")
     print("1. Configure audio routing (Stereo Mix → CABLE Input)")
     print("2. Start translation below")
     print("3. Play web video (Netflix, YouTube, etc.)")
-    print("4. Watch Farsi subtitles appear in real-time")
+    print("4. Watch translated subtitles appear in real-time")
     print("5. Use OBS Studio for subtitle display")
     print("=" * 50)
     
@@ -44,7 +44,7 @@ def main():
         
         print("✅ Translation started!")
         print("🎬 Now play any web video (Netflix, YouTube, etc.)")
-        print("📝 Farsi subtitles will appear in real-time")
+        print("📝 Translated subtitles will appear in real-time")
         print("⏹️ Press Ctrl+C to stop")
         print("-" * 50)
         

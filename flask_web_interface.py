@@ -37,7 +37,7 @@ HTML_TEMPLATE = """
 <body>
     <div class="container">
         <h1>🎤 Real-time Audio Translator</h1>
-        <p style="text-align: center; color: #666;">English to Farsi Translation</p>
+        <p style="text-align: center; color: #666;">English Translation</p>
         
         <div style="text-align: center; margin: 30px 0;">
             <button class="button" onclick="startTranslation()">🚀 Start Translation</button>
@@ -58,13 +58,13 @@ HTML_TEMPLATE = """
                 <li>Click "Start Translation"</li>
                 <li>Configure audio routing (Stereo Mix → CABLE Input)</li>
                 <li>Play web video (Netflix, YouTube, etc.)</li>
-                <li>Watch Farsi subtitles appear in real-time</li>
+                <li>Watch translated subtitles appear in real-time</li>
                 <li>Use OBS Studio for subtitle display</li>
             </ol>
         </div>
         
         <div style="text-align: center; margin-top: 30px; color: #666;">
-            <p>🌐 Web Interface for Real-time Farsi Translation</p>
+            <p>🌐 Web Interface for Real-time Translation</p>
         </div>
     </div>
     

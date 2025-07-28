@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo 🇮🇷 YouTube Farsi Translation System
+echo 🌐 YouTube Translation System
 echo ========================================
 echo.
 echo Starting Flask web interface at http://localhost:5000

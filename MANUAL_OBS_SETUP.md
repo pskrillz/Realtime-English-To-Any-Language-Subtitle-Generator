@@ -12,7 +12,7 @@ This happens when OBS can't load the Python script properly. Here's the manual s
 
 1. **In OBS Sources panel, click `+`**
 2. **Select:** `Text (FreeType 2)` or `Text (GDI+)`
-3. **Name:** `Farsi_Subtitles`
+3. **Name:** `Translated_Subtitles`
 4. **Click:** `OK`
 
 ### **Step 2: Configure Text Source**
@@ -28,7 +28,7 @@ This happens when OBS can't load the Python script properly. Here's the manual s
 
 **Advanced Options:**
 - **Read from file:** ✅ **CHECK THIS BOX**
-- **Text File:** Browse to `C:\Coding\AI\Farsi Translator\subtitle.txt`
+- **Text File:** Browse to `C:\Coding\AI\Translator\subtitle.txt`
 - **Chat log mode:** ❌ Unchecked
 - **Use custom text extents:** ❌ Unchecked
 
@@ -69,10 +69,10 @@ This happens when OBS can't load the Python script properly. Here's the manual s
 ## 🧪 **Test the Setup**
 
 ### **Step 1: Test Subtitle Display**
-1. **Open:** `C:\Coding\AI\Farsi Translator\subtitle.txt` in Notepad
+1. **Open:** `C:\Coding\AI\Translator\subtitle.txt` in Notepad
 2. **Type:** `تست زیرنویس فارسی`
 3. **Save the file**
-4. **In OBS:** You should see the Farsi text appear immediately
+4. **In OBS:** You should see the translated text appear immediately
 
 ### **Step 2: Test with Flask Interface**
 1. **Ensure Flask is running:** `http://localhost:5000`
@@ -96,7 +96,7 @@ This happens when OBS can't load the Python script properly. Here's the manual s
 3. **Start translation:** Click 🚀 button
 4. **Open OBS:** Your configured scene
 5. **Navigate to YouTube:** In browser source
-6. **Play English video:** Watch Farsi subtitles appear!
+6. **Play English video:** Watch translated subtitles appear!
 
 ---
 
@@ -174,7 +174,7 @@ curl http://localhost:5000/stats
 - ✅ Text source displays content from subtitle.txt
 - ✅ Subtitles update when subtitle.txt changes
 - ✅ Flask interface shows active translation
-- ✅ Real-time Farsi subtitles appear during English video
+- ✅ Real-time translated subtitles appear during English video
 
 ---
 

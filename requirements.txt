@@ -6,4 +6,5 @@ protobuf==4.24.4
 gradio==4.0.0
 sounddevice==0.4.6
 faster-whisper==0.9.0
-scipy==1.11.1 
+scipy==1.11.1
+googletrans==4.0.0rc1

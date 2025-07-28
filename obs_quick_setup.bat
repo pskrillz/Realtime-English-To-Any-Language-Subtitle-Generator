@@ -4,7 +4,7 @@ echo 🎥 OBS Studio Quick Setup for Subtitles
 echo ========================================
 echo.
 echo This will guide you through setting up OBS Studio
-echo for real-time Farsi subtitle display.
+echo for real-time subtitle display.
 echo.
 echo PREREQUISITES:
 echo 1. Flask interface should be running at http://localhost:5000
@@ -60,11 +60,11 @@ echo ======================
 echo 1. Start Flask interface: http://localhost:5000
 echo 2. Click "Start Translation"
 echo 3. In OBS browser source, play a YouTube video
-echo 4. Watch for Farsi subtitles to appear
+echo 4. Watch for translated subtitles to appear
 echo.
 echo SUCCESS INDICATORS:
 echo ✅ YouTube video plays in OBS
-echo ✅ Farsi subtitles appear at bottom
+echo ✅ Translated subtitles appear at bottom
 echo ✅ Subtitles update every 3-5 seconds
 echo.
 echo If you need help, check: OBS_SETUP_COMPLETE.md

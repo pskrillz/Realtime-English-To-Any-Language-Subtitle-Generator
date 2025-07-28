@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick Start Script for Real-time Farsi Translation System
+Quick Start Script for the Real-time Translation System
 This script provides a simple interface to get everything running quickly.
 """
 
@@ -14,9 +14,9 @@ from pathlib import Path
 def print_banner():
     """Print the system banner"""
     print("=" * 60)
-    print("🇮🇷 Real-time English to Farsi Translation System")
+    print("🌐 Real-time English Translation System")
     print("=" * 60)
-    print("🎯 Complete solution for live streaming with Farsi subtitles")
+    print("🎯 Complete solution for live streaming with translated subtitles")
     print("📋 Includes: VB-Cable integration, OBS Studio support, Web interface")
     print("=" * 60)
 
@@ -97,9 +97,9 @@ def test_translation():
     print("\n🧪 Testing translation system...")
     
     try:
-        from farsi_translator import FarsiTranslator
-        
-        translator = FarsiTranslator()
+        from translator import Translator
+
+        translator = Translator()
         print("Loading translation model (this may take a few minutes on first run)...")
         
         if translator.load_model():
@@ -107,7 +107,7 @@ def test_translation():
             result = translator.translate_text(test_text)
             print(f"✅ Test successful!")
             print(f"English: {test_text}")
-            print(f"Farsi: {result}")
+            print(f"Translation: {result}")
             return True
         else:
             print("❌ Failed to load translation model")
@@ -212,7 +212,7 @@ def show_obs_instructions():
     print("   - Click 'Setup Scene'")
     print("   - Click 'Test Subtitle' to verify")
     print("\n6. Start your stream/recording")
-    print("7. Speak in English - Farsi subtitles will appear!")
+    print("7. Speak in English - translated subtitles will appear!")
 
 def show_setup_guide():
     """Show the full setup guide"""

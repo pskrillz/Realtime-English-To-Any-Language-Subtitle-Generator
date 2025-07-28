@@ -1,12 +1,12 @@
 import gradio as gr
-from farsi_translator import FarsiTranslator
+from translator import Translator
 
 def create_web_interface():
-    """Create a web interface for the Farsi translator"""
-    translator = FarsiTranslator()
+    """Create a web interface for the translator"""
+    translator = Translator()
     
     def translate_text(english_text):
-        """Translate English text to Farsi"""
+        """Translate English text to the target language"""
         if not english_text.strip():
             return ""
         
@@ -17,8 +17,8 @@ def create_web_interface():
                 return "Error: Failed to load the translation model. Please check your internet connection."
         
         # Perform translation
-        farsi_text = translator.translate_text(english_text)
-        return farsi_text
+        translated_text = translator.translate_text(english_text)
+        return translated_text
     
     def translate_file(file):
         """Translate text from uploaded file"""
@@ -37,9 +37,9 @@ def create_web_interface():
             return f"Error reading file: {e}"
     
     # Create the interface
-    with gr.Blocks(title="English to Farsi Translator", theme=gr.themes.Soft()) as interface:
-        gr.Markdown("# 🇺🇸 → 🇮🇷 English to Farsi Translator")
-        gr.Markdown("Translate English text to Farsi using the Helsinki-NLP model")
+    with gr.Blocks(title="English Translator", theme=gr.themes.Soft()) as interface:
+        gr.Markdown("# 🇺🇸 → 🌐 English Translator")
+        gr.Markdown("Translate English text using Google Translate")
         
         with gr.Tab("Text Translation"):
             with gr.Row():
@@ -53,7 +53,7 @@ def create_web_interface():
                 
                 with gr.Column():
                     text_output = gr.Textbox(
-                        label="Farsi Translation",
+                        label="Translation",
                         placeholder="Translation will appear here...",
                         lines=5
                     )
@@ -75,7 +75,7 @@ def create_web_interface():
                 
                 with gr.Column():
                     file_output = gr.Textbox(
-                        label="Farsi Translation",
+                        label="Translation",
                         placeholder="Translation will appear here...",
                         lines=10
                     )
@@ -110,15 +110,15 @@ def create_web_interface():
         gr.Markdown("---")
         gr.Markdown("### About")
         gr.Markdown("""
-        This translator uses the **Helsinki-NLP/opus-mt-en-iir** model, which is a multilingual model capable of translating from English to several Indo-Iranian languages, including Farsi.
-        
+        This translator uses **Google Translate** to provide English → target language translations.
+
         **Features:**
-        - High-quality English to Farsi translation
+        - High-quality translation from English
         - Support for both text input and file upload
         - Web-based interface for easy access
         - Example translations to get you started
         
-        **Note:** The first time you use this translator, it will download the model (about 300MB), which may take a few minutes depending on your internet connection.
+        **Note:** An active internet connection is required because translations are performed using Google services.
         """)
     
     return interface

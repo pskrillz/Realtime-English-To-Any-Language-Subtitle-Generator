@@ -1,14 +1,18 @@
-# 🇮🇷 Real-time English to Farsi Translator
+# 🌐 Real-time English Translator
 
-A powerful real-time English to Farsi translation system that captures audio from any source (YouTube, Netflix, etc.) and provides live Farsi subtitles with OBS Studio integration.
+A powerful real-time English translation system that captures audio from any source (YouTube, Netflix, etc.) and provides live subtitles with OBS Studio integration.
+
+The translator uses **Google Translate** under the hood. The default output
+language is Persian (`fa`), but you can change it by editing the
+`target_language` value in `translation_config.json`.
 
 ## ✨ Features
 
 - **🎙️ Real-time Audio Capture**: Captures audio from any application (YouTube, Netflix, etc.)
-- **🧠 AI-Powered Translation**: Uses Whisper for speech recognition + Helsinki-NLP for translation
+- **🧠 AI-Powered Translation**: Uses Whisper for speech recognition + Google Translate for translation
 - **🌐 Web Interface**: Clean Flask-based control interface
 - **🎥 OBS Integration**: Automatic subtitle overlay for streaming/recording
-- **📊 Live Monitoring**: Real-time display of English → Farsi translations
+- **📊 Live Monitoring**: Real-time display of English → translated text (language configurable)
 - **⚡ High Performance**: Optimized for low-latency real-time processing
 
 ## 🚀 Quick Start
@@ -34,14 +38,14 @@ python flask_web_interface.py
 ### 4. Open Web Interface
 - Navigate to `http://localhost:5000`
 - Click "🚀 Start Translation"
-- Play English content and watch Farsi subtitles appear!
+ - Play English content and watch translated subtitles appear!
 
 ## 📁 Core Files
 
 ### **Main Components**
 - `flask_web_interface.py` - Web control interface
 - `subtitle_stream.py` - Real-time audio processing engine  
-- `farsi_translator.py` - Translation core
+- `translator.py` - Translation core
 - `obs_integration.py` - OBS Studio script for subtitle display
 
 ### **Utilities**
@@ -59,7 +63,7 @@ python flask_web_interface.py
 1. **Load the script**: Tools → Scripts → Add `obs_integration.py`
 2. **Configure**: Set subtitle file to `subtitle.txt`
 3. **Setup scene**: Click "Setup Scene" in script properties
-4. **Record/Stream**: Farsi subtitles will appear automatically
+4. **Record/Stream**: Translated subtitles will appear automatically
 
 ## 🛠️ Advanced Usage
 
@@ -69,16 +73,17 @@ Edit `translation_config.json` to adjust:
 - Audio chunk duration
 - Subtitle display duration
 - Audio device selection
+- Target subtitle language (`target_language`)
 
 ### **Monitoring Translations**
 ```bash
 python monitor_subtitles.py
 ```
-Shows both English and Farsi in real-time:
+Shows both English and the translated text in real-time:
 ```
 🎯 NEW TRANSLATION:
    🇺🇸 English:  Hello, how are you?
-   🇮🇷 Farsi:    سلام، چطور هستید؟
+   🌐 Translation: سلام، چطور هستید؟
 ```
 
 ### **System Testing**
@@ -94,10 +99,10 @@ Verifies all components are working correctly.
 
 ## 🎯 Use Cases
 
-- **YouTube Videos**: Real-time Farsi subtitles for English videos
-- **Netflix/Streaming**: Live translation of movies and shows  
-- **Live Streams**: Farsi subtitles for English live content
-- **OBS Recording**: Burn-in Farsi subtitles to recorded videos
+- **YouTube Videos**: Real-time translated subtitles for English videos
+- **Netflix/Streaming**: Live translation of movies and shows
+- **Live Streams**: Translated subtitles for English live content
+- **OBS Recording**: Burn-in translated subtitles to recorded videos
 - **Language Learning**: Practice with dual-language display
 
 ## 🔧 System Requirements
@@ -118,4 +123,4 @@ MIT License - Feel free to use this project for personal or commercial purposes.
 
 ---
 
-**🎉 Enjoy real-time Farsi translations! Perfect for Persian speakers wanting to enjoy English content with native subtitles.** 
+**🎉 Enjoy real-time translations! Perfect for enjoying English content with subtitles in your preferred language.**
