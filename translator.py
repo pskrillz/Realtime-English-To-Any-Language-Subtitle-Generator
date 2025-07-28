@@ -1,4 +1,4 @@
-from googletrans import Translator
+from googletrans import Translator as GoogleTranslator
 import gradio as gr
 
 class Translator:
@@ -21,7 +21,7 @@ class Translator:
         """Initialize the Google Translate client."""
         try:
             print("Initializing Google Translate client")
-            self.translator = Translator()
+            self.translator = GoogleTranslator()
             self.model = self.translator  # attribute used by other modules
             print("Translator ready")
             return True
