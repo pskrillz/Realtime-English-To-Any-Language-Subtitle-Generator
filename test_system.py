@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script for the real-time Farsi translation system
+Test script for the real-time translation system
 This script tests all components to ensure everything is working correctly.
 """
 
@@ -22,10 +22,10 @@ def test_imports():
         return False
     
     try:
-        from transformers import MarianMTModel, MarianTokenizer
-        print("✅ Transformers")
+        import googletrans
+        print(f"✅ googletrans: {googletrans.__version__}")
     except ImportError as e:
-        print(f"❌ Transformers import failed: {e}")
+        print(f"❌ googletrans import failed: {e}")
         return False
     
     try:
@@ -85,21 +85,21 @@ def test_audio_devices():
         print(f"❌ Audio device test failed: {e}")
         return False
 
-def test_farsi_translator():
-    """Test the Farsi translator"""
-    print("\n🇮🇷 Testing Farsi translator...")
+def test_translator():
+    """Test the translator"""
+    print("\n🌐 Testing translator...")
     
     try:
-        from farsi_translator import FarsiTranslator
-        
-        translator = FarsiTranslator()
-        print("✅ FarsiTranslator class created")
+        from translator import Translator
+
+        translator = Translator()
+        print("✅ Translator class created")
         
         # Test translation
         test_text = "Hello, how are you?"
         print(f"Testing translation: '{test_text}'")
         
-        # This will download the model on first run
+        # Uses Google Translate via the googletrans library
         success = translator.load_model()
         if success:
             result = translator.translate_text(test_text)
@@ -110,7 +110,7 @@ def test_farsi_translator():
             return False
             
     except Exception as e:
-        print(f"❌ Farsi translator test failed: {e}")
+        print(f"❌ Translator test failed: {e}")
         return False
 
 def test_whisper_model():
@@ -206,7 +206,8 @@ def create_test_config():
         "enable_subtitles": True,
         "subtitle_duration": 3.0,
         "min_confidence": 0.5,
-        "language": "en"
+        "language": "en",
+        "target_language": "fa"
     }
     
     try:
@@ -226,7 +227,7 @@ def run_comprehensive_test():
     tests = [
         ("Imports", test_imports),
         ("Audio Devices", test_audio_devices),
-        ("Farsi Translator", test_farsi_translator),
+        ("Translator", test_translator),
         ("Whisper Model", test_whisper_model),
         ("File Permissions", test_file_permissions),
         ("OBS Integration", test_obs_integration),

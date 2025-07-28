@@ -5,7 +5,7 @@ import time
 import queue
 import os
 from faster_whisper import WhisperModel
-from farsi_translator import FarsiTranslator
+from translator import Translator
 import torch
 from collections import deque
 import json
@@ -54,13 +54,18 @@ class RealtimeAudioTranslator:
             "enable_subtitles": True,
             "subtitle_duration": 3.0,
             "min_confidence": 0.5,
-            "language": "en"
+            "language": "en",
+            "target_language": "fa"
         }
         
         try:
             if os.path.exists(self.config_file):
                 with open(self.config_file, 'r') as f:
                     self.config = json.load(f)
+                # Ensure new keys exist
+                for k, v in default_config.items():
+                    if k not in self.config:
+                        self.config[k] = v
             else:
                 self.config = default_config
                 self.save_config()
@@ -93,16 +98,18 @@ class RealtimeAudioTranslator:
             print(f"Error loading Whisper model: {e}")
             return False
         
-        # Initialize Farsi translator
+        # Initialize translator
         try:
-            print("Loading Farsi translator...")
-            self.translator = FarsiTranslator()
+            print("Loading translator...")
+            self.translator = Translator(
+                target_lang=self.config.get("target_language", "fa")
+            )
             if not self.translator.load_model():
-                print("Failed to load Farsi translator")
+                print("Failed to load translator")
                 return False
-            print("Farsi translator loaded successfully")
+            print("Translator loaded successfully")
         except Exception as e:
-            print(f"Error loading Farsi translator: {e}")
+            print(f"Error loading translator: {e}")
             return False
         
         return True
@@ -161,37 +168,37 @@ class RealtimeAudioTranslator:
                 
                 # Translate if enabled
                 if self.config["enable_translation"]:
-                    farsi_text = self.translator.translate_text(text)
-                    print(f"Translated: {farsi_text}")
+                    translated_text = self.translator.translate_text(text)
+                    print(f"Translated: {translated_text}")
                     
                     # Write subtitle if enabled
                     if self.config["enable_subtitles"]:
-                        self.write_subtitle(farsi_text, text)  # Pass both Farsi and English
+                        self.write_subtitle(translated_text, text)  # Pass both languages
                     
                     self.translation_count += 1
                     self.last_translation_time = time.time()
                     
-                    return farsi_text
+                    return translated_text
             
         except Exception as e:
             print(f"Error processing audio chunk: {e}")
         
         return None
     
-    def write_subtitle(self, farsi_text, english_text=None):
+    def write_subtitle(self, translated_text, english_text=None):
         """Write subtitle text to file for OBS"""
         try:
             # Create subtitle data with timing and both languages
             subtitle_data = {
-                "text": farsi_text,
+                "text": translated_text,
                 "english": english_text if english_text else "",
                 "timestamp": time.time(),
                 "duration": self.config["subtitle_duration"]
             }
             
-            # Write only Farsi to TXT file (for OBS)
+            # Write only translated text to TXT file (for OBS)
             with open(self.subtitle_file, 'w', encoding='utf-8') as f:
-                f.write(farsi_text)
+                f.write(translated_text)
             
             # Write JSON format with both languages for monitoring
             json_file = self.subtitle_file.replace('.txt', '.json')
